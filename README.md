@@ -79,3 +79,7 @@ The scripts write only the encrypted output.
 Rename the `app` namespace and labels, set the hostname in the ingress and
 `cloudflared` config, point the image at your registry, seal your secrets.
 `kustomize build manifests/app` renders the set for a dry run.
+
+## License
+
+MIT. See [LICENSE](LICENSE).
