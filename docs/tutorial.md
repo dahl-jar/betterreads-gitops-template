@@ -4,7 +4,8 @@ Stands up the stack on a fresh single-node cluster: k3s, the SealedSecrets
 controller, Argo CD, then the app and its data services synced from your fork.
 Ends at a `200` from `/healthz`.
 
-Needs a Linux machine with `sudo` and a GitHub account.
+Needs an Ubuntu machine with `sudo`, a GitHub account, and `kubectl` on your
+workstation.
 
 ## 1. Fork and clone
 
@@ -38,7 +39,15 @@ kubectl get nodes
 ```sh
 kubectl apply -f https://github.com/bitnami-labs/sealed-secrets/releases/latest/download/controller.yaml
 kubectl rollout status -n kube-system deployment/sealed-secrets-controller
-brew install kubeseal        # see the releases page for Linux
+```
+
+Install the `kubeseal` CLI on your workstation:
+
+```sh
+KUBESEAL_VERSION=$(curl -s https://api.github.com/repos/bitnami-labs/sealed-secrets/releases/latest | grep -oP '"tag_name": "v\K[^"]+')
+curl -sLo kubeseal.tar.gz "https://github.com/bitnami-labs/sealed-secrets/releases/download/v${KUBESEAL_VERSION}/kubeseal-${KUBESEAL_VERSION}-linux-amd64.tar.gz"
+tar xf kubeseal.tar.gz kubeseal
+sudo install kubeseal /usr/local/bin/
 ```
 
 ## 4. Install Argo CD
