@@ -8,7 +8,7 @@ encrypted Postgres backup.
 Names are generic (`app`, `your-org`, `example.com`); secrets are example files
 you fill in and seal.
 
-Full setup: [docs/tutorial.md](docs/tutorial.md).
+Setup: [tutorial](docs/tutorial.md). Image: [build and push](docs/how-to/build-and-push-image.md).
 
 ## Layout
 

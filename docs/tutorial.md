@@ -5,7 +5,7 @@ controller, Argo CD, then the app and its data services synced from your fork.
 Ends at a `200` from `/healthz`.
 
 Needs an Ubuntu machine with `sudo`, a GitHub account, and `kubectl` on your
-workstation.
+workstation. Build the app image first: [how-to/build-and-push-image.md](how-to/build-and-push-image.md).
 
 ## 1. Fork and clone
 
