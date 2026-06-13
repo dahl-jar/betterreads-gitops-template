@@ -1,0 +1,23 @@
+# //////////////////////////////////////////////////////////////////////////
+# TRAEFIK
+# JSON access logs; drop auth and cookie headers
+# //////////////////////////////////////////////////////////////////////////
+apiVersion: helm.cattle.io/v1
+kind: HelmChartConfig
+metadata:
+  name: traefik
+  namespace: kube-system
+spec:
+  valuesContent: |-
+    logs:
+      access:
+        enabled: true
+        format: json
+        fields:
+          headers:
+            defaultMode: keep
+            names:
+              Authorization: drop
+              Cookie: drop
+              X-Forwarded-For: keep
+              User-Agent: keep

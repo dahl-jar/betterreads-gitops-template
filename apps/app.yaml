@@ -1,0 +1,26 @@
+# //////////////////////////////////////////////////////////////////////////
+# APPLICATION: APP
+# Argo CD Application for the app workload under manifests/app
+# //////////////////////////////////////////////////////////////////////////
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: app
+  source:
+    repoURL: https://github.com/your-org/your-repo.git
+    targetRevision: main
+    path: manifests/app
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: app
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

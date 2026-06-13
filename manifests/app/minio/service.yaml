@@ -1,0 +1,23 @@
+# //////////////////////////////////////////////////////////////////////////
+# MINIO SERVICE
+# Headless Service for the S3 API and console
+# //////////////////////////////////////////////////////////////////////////
+apiVersion: v1
+kind: Service
+metadata:
+  name: minio
+  namespace: app
+  labels:
+    app.kubernetes.io/name: minio
+    app.kubernetes.io/part-of: app
+spec:
+  clusterIP: None
+  selector:
+    app.kubernetes.io/name: minio
+  ports:
+    - name: api
+      port: 9000
+      targetPort: api
+    - name: console
+      port: 9001
+      targetPort: console
